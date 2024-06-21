@@ -59,8 +59,7 @@ wer_metric = load("wer")
 # run
 all_generated_ids = []
 all_wers = []
-progress_bar = tqdm(range(len(data)))
-for ex in range(len(data)):
+for ex in tqdm(range(len(data))):
     # convert to input features
     inputs = processor(data[ex]["audio"]["array"], sampling_rate=data[ex]['audio']['sampling_rate'], return_tensors="pt")
     # inference
@@ -85,8 +84,6 @@ for ex in range(len(data)):
 
     all_generated_ids.append(generated_ids)
     all_wers.append(wer)
-
-    progress_bar.update(1)
 
 
 # Save 

@@ -1,5 +1,5 @@
 
-CORPUS_PATH = f"/home/hmohebbi/Projects/ContextMixing_ASR/directory/mfa/common_voice/test/corpus/"
+CORPUS_PATH = f"~/ieai-miniproject-context-mixing/directory/mfa/common_voice/test/corpus/"
 
 # imports 
 import sys, os

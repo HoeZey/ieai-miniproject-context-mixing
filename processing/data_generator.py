@@ -3,9 +3,9 @@
 TASK = "common_voice"
 SPLIT = "test" 
 SEED = 42
-GENERATED_IDS_PATH = f"/home/hmohebbi/Projects/ContextMixing_ASR/directory/predictions/{TASK}/{SPLIT}/"
-ALIGNMENT_PATH = f"/home/hmohebbi/Projects/ContextMixing_ASR/directory/mfa/common_voice/test/outputs/"
-ANNOTATED_DATA_PATH = f"/home/hmohebbi/Projects/ContextMixing_ASR/directory/datasets/{TASK}/{SPLIT}/"
+GENERATED_IDS_PATH = f"~/ieai-miniproject-context-mixing/directory/predictions/{TASK}/{SPLIT}/"
+ALIGNMENT_PATH = f"~/ieai-miniproject-context-mixing/directory/mfa/common_voice/test/outputs/"
+ANNOTATED_DATA_PATH = f"~/ieai-miniproject-context-mixing/directory/datasets/{TASK}/{SPLIT}/"
 
 # import
 import sys, os
