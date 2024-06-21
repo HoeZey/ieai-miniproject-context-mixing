@@ -1,0 +1,8 @@
+name: ieia-context-mix
+channels:
+  - defaults
+  - pip
+dependencies:
+  - python=3.10
+  - pip:
+    - -r requirements.txt
