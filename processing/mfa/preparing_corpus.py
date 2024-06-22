@@ -1,5 +1,4 @@
-
-CORPUS_PATH = f"~/ieai-miniproject-context-mixing/directory/mfa/common_voice/test/corpus/"
+CORPUS_PATH = f"./directory/mfa/common_voice/test/corpus/"
 
 # imports 
 import sys, os

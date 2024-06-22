@@ -1,11 +1,9 @@
-
-
 TASK = "common_voice"
 SPLIT = "test" 
 SEED = 42
-GENERATED_IDS_PATH = f"~/ieai-miniproject-context-mixing/directory/predictions/{TASK}/{SPLIT}/"
-ALIGNMENT_PATH = f"~/ieai-miniproject-context-mixing/directory/mfa/common_voice/test/outputs/"
-ANNOTATED_DATA_PATH = f"~/ieai-miniproject-context-mixing/directory/datasets/{TASK}/{SPLIT}/"
+GENERATED_IDS_PATH = f"./directory/predictions/{TASK}/{SPLIT}/"
+ALIGNMENT_PATH = f"./directory/mfa/common_voice/test/outputs/"
+ANNOTATED_DATA_PATH = f"./directory/datasets/{TASK}/{SPLIT}/"
 
 # import
 import sys, os
@@ -227,7 +225,6 @@ def det_noun(T):
                         })
     return data
 
-
 def pronoun_verb(T):
     data = []
     for ex in range(len(T)):
@@ -328,7 +325,6 @@ def pronoun_verb(T):
                     })
         
     return data
-
 
 def det_noun_verb(T):
     data = []
@@ -444,9 +440,10 @@ def det_noun_verb(T):
                     })
     return data
 
-
 # load original data
+print('DOWNLOADING DATA')
 org_data = load_dataset(DATA_KEY[TASK], 'fr', split=SPLIT, verification_mode="all_checks")
+print('CASTING FILES TO AUDIO')
 org_data = org_data.cast_column("audio", Audio(sampling_rate=16_000))
 
 # Load generated ids
@@ -456,6 +453,7 @@ for model_name in MODEL_PATH.keys():
         generated_ids[model_name] = pickle.load(fp)
 
 # load alignments
+print("ALIGNING")
 file_ids = [int(f.split('.')[0]) for f in os.listdir(ALIGNMENT_PATH) if f.endswith('.TextGrid')]
 alignments = []
 for ex in range(len(org_data)):
@@ -476,8 +474,8 @@ for ex in range(len(org_data)):
     alignments.append({'total_start': total_min, 'total_end': total_max, 'intervals': intervals})           
 alignments = Dataset.from_list(alignments)
 
-
 # create and save annotated datasets
+print('CREATING HOMOPHONY DATASETS')
 # pronoun_verb
 pronoun_verb_data = pronoun_verb(org_data[TEXT_KEY[TASK]])
 pronoun_verb_data = Dataset.from_list(pronoun_verb_data)
@@ -501,6 +499,7 @@ balanced_det_noun_data = concatenate_datasets([det_noun_data.select(sg_indices[:
 print(len(balanced_det_noun_data))
 
 # aggregate all templates
+print('AGGREGATING ALL TEMPLATES')
 all_data = concatenate_datasets([balanced_det_noun_data, pronoun_verb_data, det_noun_verb_data])
 all_data.save_to_disk(f"{ANNOTATED_DATA_PATH}all")
 

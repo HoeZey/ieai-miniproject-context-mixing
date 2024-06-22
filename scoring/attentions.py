@@ -1,7 +1,7 @@
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("--MODEL_NAME")
-parser.add_argument("--DIM_AGGREGATOR")
+parser.add_argument("--MODEL_NAME") # whisper or wav2vec2
+parser.add_argument("--DIM_AGGREGATOR") # max or mean
 parser.add_argument("--RANDOM", action='store_true')
 args = parser.parse_args()
 
@@ -17,9 +17,9 @@ TASK = "common_voice"
 SPLIT = "test" 
 TEMPLATE = "all"
 SELECTED_GPU = 0
-ANNOTATED_DATA_PATH = f"~/ieai-miniproject-context-mixing/directory/datasets/{TASK}/{SPLIT}/"
-GENERATED_IDS_PATH = f"~/ieai-miniproject-context-mixing/directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
-SAVE_SCORES_PATH = f"~/ieai-miniproject-context-mixing/directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
+ANNOTATED_DATA_PATH = f"./directory/datasets/{TASK}/{SPLIT}/"
+GENERATED_IDS_PATH = f"./directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
+SAVE_SCORES_PATH = f"./directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
 
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.modules[__name__].__file__), "..")))

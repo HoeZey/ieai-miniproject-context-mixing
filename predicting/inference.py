@@ -10,7 +10,7 @@ MODEL_NAME = args.MODEL_NAME
 TASK = "common_voice"
 SPLIT = "test" 
 SELECTED_GPU = 0
-SAVE_OUTPUT_PATH = f"/home/hmohebbi/Projects/ContextMixing_ASR/directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
+SAVE_OUTPUT_PATH = f"./directory/directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
 
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.modules[__name__].__file__), "..")))
@@ -32,7 +32,7 @@ if not os.path.exists(SAVE_OUTPUT_PATH):
 ### GPU
 if torch.cuda.is_available():     
     device = torch.device(f"cuda:{SELECTED_GPU}")
-    print('We will use the GPU:', torch.cuda.get_device_name(SELECTED_GPU))
+    print('Using GPU:', torch.cuda.get_device_name(SELECTED_GPU))
 else:
     device = torch.device("cpu")
     print('No GPU available, using the CPU instead.')

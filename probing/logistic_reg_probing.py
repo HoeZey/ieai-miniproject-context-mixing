@@ -20,9 +20,9 @@ TASK = "common_voice"
 SPLIT = "test" 
 TEMPLATE = "all"
 SEED = 12
-ANNOTATED_DATA_PATH = f"/home/hmohebbi/Projects/ContextMixing_ASR/directory/datasets/{TASK}/{SPLIT}/"
-REPRESENTATIONS_PATH = f"/home/hmohebbi/Projects/ContextMixing_ASR/directory/representations/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
-SAVE_PATH = f"/home/hmohebbi/Projects/ContextMixing_ASR/directory/probes/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
+ANNOTATED_DATA_PATH = f"./directory/datasets/{TASK}/{SPLIT}/"
+REPRESENTATIONS_PATH = f"./directory/representations/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
+SAVE_PATH = f"./directory/probes/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
 
 # Import Packages
 import sys, os

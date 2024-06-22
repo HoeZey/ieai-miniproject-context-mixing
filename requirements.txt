@@ -1,2 +1,10 @@
-transformers==4.25.1
-datasets==2.10.0
+transformers
+datasets==2.16
+torch
+scikit-learn
+inflecteur
+tqdm
+spacy
+librosa
+evaluate
+jiwer

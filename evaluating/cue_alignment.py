@@ -16,10 +16,10 @@ SKIP_SPECIAL_TOKENS = args.SKIP_SPECIAL_TOKENS
 TEMPLATE = "all"
 TASK = "common_voice"
 SPLIT = "test" 
-ANNOTATED_DATA_PATH = f"~/ieai-miniproject-context-mixing/directory/datasets/{TASK}/{SPLIT}/"
-GENERATED_IDS_PATH = f"~/ieai-miniproject-context-mixing/directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
-SCORES_PATH = f"~/ieai-miniproject-context-mixing/directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
-SAVE_EVAL_PATH = f"~/ieai-miniproject-context-mixing/directory/evals/cue_alignment/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
+ANNOTATED_DATA_PATH = f"./directory/datasets/{TASK}/{SPLIT}/"
+GENERATED_IDS_PATH = f"./directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
+SCORES_PATH = f"./directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
+SAVE_EVAL_PATH = f"./directory/evals/cue_alignment/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
 
 # imports
 import sys, os

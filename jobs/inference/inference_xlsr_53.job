@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#SBATCH --partition=gpu
+#SBATCH --gpus=1
+#SBATCH --job-name=INFERENCE_W2V
+#SBATCH --ntasks=1
+#SBATCH --time=01:00:00
+#SBATCH --output=output/inference/inference_w2v_%A.out
+
+module purge
+module load 2022
+module load Anaconda3/2022.05
+
+cd $HOME/ieai-miniproject-context-mixing/
+source activate ieai-context-mix
+
+python predicting/inference.py --MODEL_NAME wav2vec2-large-xlsr-53-french
