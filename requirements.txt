@@ -1,4 +1,4 @@
-transformers
+transformers==4.25.1
 datasets==2.16
 torch
 scikit-learn
@@ -8,3 +8,5 @@ spacy
 librosa
 evaluate
 jiwer
+numpy==1.26.0
+more_itertools

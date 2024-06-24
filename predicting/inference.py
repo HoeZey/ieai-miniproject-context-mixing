@@ -5,8 +5,6 @@ args = parser.parse_args()
 
 MODEL_NAME = args.MODEL_NAME
 
-# MODEL_NAME = "whisper-medium"
-
 TASK = "common_voice"
 SPLIT = "test" 
 SELECTED_GPU = 0
