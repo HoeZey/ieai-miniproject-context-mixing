@@ -14,6 +14,6 @@ module load Anaconda3/2022.05
 cd $HOME/ieai-miniproject-context-mixing/
 source activate ieai-context-mix
 
-python scoring/valueZeroing.py \
+python experiments/scoring/valueZeroing.py \
     --MODEL_NAME wav2vec2-large-xlsr-53-french \
     --DIM_AGGREGATOR mean

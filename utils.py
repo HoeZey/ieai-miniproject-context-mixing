@@ -6,19 +6,19 @@ irregular_nouns = ['oeil', 'yeux', 'aïeul', 'aïeux', 'ciel', 'cieux', 'vieil',
 MODEL_PATH = {
     # 'whisper-tiny': 'openai/whisper-tiny',
     'whisper-base': 'openai/whisper-base',
-    'whisper-small': 'openai/whisper-small',
-    'whisper-medium': 'openai/whisper-medium',
-    'wav2vec2-large-xlsr-53-french': 'jonatasgrosman/wav2vec2-large-xlsr-53-french',
-    'asr-wav2vec2-french': 'bhuang/asr-wav2vec2-french',
+    # 'whisper-small': 'openai/whisper-small',
+    # 'whisper-medium': 'openai/whisper-medium',
+    # 'wav2vec2-large-xlsr-53-french': 'jonatasgrosman/wav2vec2-large-xlsr-53-french',
+    # 'asr-wav2vec2-french': 'bhuang/asr-wav2vec2-french',
 }
 
 NUM_LAYERS = {
     # 'whisper-tiny': 4,
     'whisper-base': 6,
-    'whisper-small': 12,
-    'whisper-medium': 24,
-    'wav2vec2-large-xlsr-53-french': 24,
-    'asr-wav2vec2-french': 24,
+    # 'whisper-small': 12,
+    # 'whisper-medium': 24,
+    # 'wav2vec2-large-xlsr-53-french': 24,
+    # 'asr-wav2vec2-french': 24,
 }
 
 DATA_KEY = {

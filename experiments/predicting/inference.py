@@ -8,7 +8,7 @@ MODEL_NAME = args.MODEL_NAME
 TASK = "common_voice"
 SPLIT = "test" 
 SELECTED_GPU = 0
-SAVE_OUTPUT_PATH = f"./directory/directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
+SAVE_OUTPUT_PATH = f"./directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
 
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.modules[__name__].__file__), "..")))

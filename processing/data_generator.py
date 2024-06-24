@@ -30,10 +30,10 @@ inflecteur.load_dict()
 
 PROCESSOR = {
     'whisper-base': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-base'], task='transcribe', language='french'),
-    'whisper-small': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-small'], task='transcribe', language='french'),
-    'whisper-medium': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-medium'], task='transcribe', language='french'),
-    'wav2vec2-large-xlsr-53-french': Wav2Vec2Processor.from_pretrained(MODEL_PATH['wav2vec2-large-xlsr-53-french']), 
-    'asr-wav2vec2-french': Wav2Vec2Processor.from_pretrained(MODEL_PATH['asr-wav2vec2-french']), 
+    # 'whisper-small': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-small'], task='transcribe', language='french'),
+    # 'whisper-medium': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-medium'], task='transcribe', language='french'),
+    # 'wav2vec2-large-xlsr-53-french': Wav2Vec2Processor.from_pretrained(MODEL_PATH['wav2vec2-large-xlsr-53-french']), 
+    # 'asr-wav2vec2-french': Wav2Vec2Processor.from_pretrained(MODEL_PATH['asr-wav2vec2-french']), 
 }
 
 def find_indices(processor, ex, cue_word, target_word):

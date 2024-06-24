@@ -23,7 +23,7 @@ GENERATED_IDS_PATH = f"./directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
 SAVE_SCORES_PATH = f"./directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
 
 import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.modules[__name__].__file__), "..")))
+sys.path.append('./modeling')
 import pickle
 from tqdm.auto import tqdm
 import numpy as np

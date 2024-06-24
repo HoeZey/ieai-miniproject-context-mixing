@@ -17,6 +17,6 @@ source activate ieai-context-mix
 pip install torch
 pip install -r requirements.txt
 
-python scoring/attentions.py \
+python experiments/scoring/attentions.py \
     --MODEL_NAME wav2vec2-large-xlsr-53-french \
     --DIM_AGGREGATOR mean 

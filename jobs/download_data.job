@@ -14,7 +14,5 @@ module load Anaconda3/2022.05
 cd $HOME/ieai-miniproject-context-mixing/
 source activate ieai-context-mix
 
-# pip install -r requirements.txt
-# pip install datasets==2.16
 python -m spacy download fr_core_news_md
 python processing/data_generator.py
