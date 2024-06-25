@@ -2,10 +2,10 @@
 
 #SBATCH --partition=gpu
 #SBATCH --gpus=1
-#SBATCH --job-name=ORIG_XLSR_53_ATTNS
+#SBATCH --job-name=ORIG_WHISPER_BASE_ATTNS
 #SBATCH --ntasks=1
-#SBATCH --time=00:15:00
-#SBATCH --output=output/original_results/xlsr_53_attns_%A.out
+#SBATCH --time=00:05:00
+#SBATCH --output=output/original_experiments/whisper_base_attns_%A.out
 
 module purge
 module load 2022
@@ -14,9 +14,6 @@ module load Anaconda3/2022.05
 cd $HOME/ieai-miniproject-context-mixing/
 source activate ieai-context-mix
 
-pip install torch
-pip install -r requirements.txt
-
 python experiments/scoring/attentions.py \
-    --MODEL_NAME wav2vec2-large-xlsr-53-french \
-    --DIM_AGGREGATOR mean 
+    --MODEL_NAME whisper \
+    --DIM_AGGREGATOR mean

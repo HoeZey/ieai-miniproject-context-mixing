@@ -16,14 +16,14 @@ RANDOM = args.RANDOM
 METRIC = 'cosine'
 TASK = "common_voice"
 SPLIT = "test" 
-TEMPLATE = "all"
+TEMPLATE = ""
 SELECTED_GPU = 0
 ANNOTATED_DATA_PATH = f"./directory/datasets/{TASK}/{SPLIT}/"
 GENERATED_IDS_PATH = f"./directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
 SAVE_SCORES_PATH = f"./directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
 
 import sys, os
-sys.path.append('./modeling')
+sys.path.append('.')
 import pickle
 from tqdm.auto import tqdm
 import numpy as np
@@ -39,9 +39,10 @@ from utils import MODEL_PATH, get_encoder_word_boundaries
 if not os.path.exists(SAVE_SCORES_PATH):
     os.makedirs(SAVE_SCORES_PATH)
 
-DISTANCE_FUNC = {'cosine': cosine_distances,
-                 'euclidean': euclidean_distances
-                }
+DISTANCE_FUNC = {
+    'cosine': cosine_distances,
+    'euclidean': euclidean_distances
+}
 
 ### GPU
 if torch.cuda.is_available():     

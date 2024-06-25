@@ -2,10 +2,10 @@
 
 #SBATCH --partition=gpu
 #SBATCH --gpus=1
-#SBATCH --job-name=DOWNLOAD_DATA
+#SBATCH --job-name=DATA_GENERATOR
 #SBATCH --ntasks=1
-#SBATCH --time=01:00:00
-#SBATCH --output=output/misc/download_data_%A.out
+#SBATCH --time=00:05:00
+#SBATCH --output=output/processing/data_generator_%A.out
 
 module purge
 module load 2022
