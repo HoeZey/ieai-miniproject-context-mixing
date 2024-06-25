@@ -23,7 +23,7 @@ SAVE_EVAL_PATH = f"./directory/evals/cue_alignment/{TASK}/{SPLIT}/{TEMPLATE}/{MO
 
 # imports
 import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.modules[__name__].__file__), "..")))
+sys.path.append('.')
 import pickle
 import numpy as np
 import torch

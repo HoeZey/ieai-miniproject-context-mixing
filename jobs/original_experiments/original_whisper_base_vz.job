@@ -2,10 +2,10 @@
 
 #SBATCH --partition=gpu
 #SBATCH --gpus=1
-#SBATCH --job-name=ORIG_xlsr_53_VZ
+#SBATCH --job-name=ORIG_WHISPER_BASE_VZ
 #SBATCH --ntasks=1
 #SBATCH --time=00:05:00
-#SBATCH --output=output/original_results/xlsr_53_vz_%A.out
+#SBATCH --output=output/original_experiments/whisper_base_vz_%A.out
 
 module purge
 module load 2022
@@ -15,5 +15,5 @@ cd $HOME/ieai-miniproject-context-mixing/
 source activate ieai-context-mix
 
 python experiments/scoring/valueZeroing.py \
-    --MODEL_NAME wav2vec2-large-xlsr-53-french \
+    --MODEL_NAME whisper-base \
     --DIM_AGGREGATOR mean

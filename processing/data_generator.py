@@ -213,8 +213,8 @@ def det_noun(T):
                 'cue_word': cue_word.text, 
                 'target_word': target_word.text,
                 'target_word_2': None,
-                'path': org_data[ex]['path'],
-                'audio': org_data[ex]['audio'],
+                'path': original_data[ex]['path'],
+                'audio': original_data[ex]['audio'],
                 'alignment': alignments[ex],
                 'target_indices': {'enc': target_word_enc_indices, 'dec': target_token_dec_indices},
                 'cue_indices': {'enc': cue_word_enc_indices, 'dec': cue_token_dec_indices},
@@ -313,8 +313,8 @@ def pronoun_verb(T):
             'cue_word': cue_word.text, 
             'target_word': target_word.text,
             'target_word_2': None,
-            'path': org_data[ex]['path'],
-            'audio': org_data[ex]['audio'],
+            'path': original_data[ex]['path'],
+            'audio': original_data[ex]['audio'],
             'alignment': alignments[ex],
             'target_indices': {'enc': target_word_enc_indices, 'dec': target_token_dec_indices},
             'cue_indices': {'enc': cue_word_enc_indices, 'dec': cue_token_dec_indices},
@@ -428,8 +428,8 @@ def det_noun_verb(T):
             'cue_word': cue_word.text, 
             'target_word': target_word.text,
             'target_word_2': target_word_2.text,
-            'path': org_data[ex]['path'],
-            'audio': org_data[ex]['audio'],
+            'path': original_data[ex]['path'],
+            'audio': original_data[ex]['audio'],
             'alignment': alignments[ex],
             'cue_indices': {'enc': cue_word_enc_indices, 'dec': cue_token_dec_indices},
             'target_indices': {'enc': target_word_enc_indices, 'dec': target_token_dec_indices},
@@ -442,9 +442,9 @@ def det_noun_verb(T):
 
 # load original data
 print('DOWNLOADING DATA')
-org_data = load_dataset(DATA_KEY[TASK], 'fr', split=SPLIT, verification_mode="all_checks")
+original_data = load_dataset(DATA_KEY[TASK], 'fr', split=SPLIT, verification_mode="all_checks")
 print('CASTING FILES TO AUDIO')
-org_data = org_data.cast_column("audio", Audio(sampling_rate=16_000))
+original_data = original_data.cast_column("audio", Audio(sampling_rate=16_000))
 
 # Load generated ids
 generated_ids = {}
@@ -456,7 +456,7 @@ for model_name in MODEL_PATH.keys():
 print("ALIGNING")
 file_ids = [int(f.split('.')[0]) for f in os.listdir(ALIGNMENT_PATH) if f.endswith('.TextGrid')]
 alignments = []
-for ex in range(len(org_data)):
+for ex in range(len(original_data)):
     if ex not in file_ids:
         alignments.append({'id': ex, 'total_start': None, 'total_end': None, 'intervals': None})           
         continue
@@ -477,17 +477,17 @@ alignments = Dataset.from_list(alignments)
 # create and save annotated datasets
 print('CREATING HOMOPHONY DATASETS')
 # pronoun_verb
-pronoun_verb_data = pronoun_verb(org_data[TEXT_KEY[TASK]])
+pronoun_verb_data = pronoun_verb(original_data[TEXT_KEY[TASK]])
 pronoun_verb_data = Dataset.from_list(pronoun_verb_data)
 print(len(pronoun_verb_data))
 
 # det_noun_verb
-det_noun_verb_data = det_noun_verb(org_data[TEXT_KEY[TASK]])
+det_noun_verb_data = det_noun_verb(original_data[TEXT_KEY[TASK]])
 det_noun_verb_data = Dataset.from_list(det_noun_verb_data)
 print(len(det_noun_verb_data))
 
 # det_noun
-det_noun_data = det_noun(org_data[TEXT_KEY[TASK]])
+det_noun_data = det_noun(original_data[TEXT_KEY[TASK]])
 det_noun_data = Dataset.from_list(det_noun_data)
 # balancing sg and pl in det_noun template
 sg_indices = np.where(np.array(det_noun_data['label_number']) == 'Number_sing')[0]

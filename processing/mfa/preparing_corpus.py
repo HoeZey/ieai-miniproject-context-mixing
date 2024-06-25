@@ -21,7 +21,7 @@ for ex in range(len(data)):
     audio_path = data[ex]['audio']['path']
     # manual address fix
     splits = audio_path.split('/')
-    audio_path = "/".join(splits[:-1]) + f"/fr_test_0/" + splits[-1]
+    audio_path = "/".join(splits[:-1]) + f"/" + splits[-1]
     os.system(f"cp {audio_path} {CORPUS_PATH}{ex}.{audio_path.split('.')[-1]}")
 
     ## Text
