@@ -1,0 +1,124 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 4.925625 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 4.925625 
+        intervals: size = 8 
+        intervals [1]:
+            xmin = 0.0 
+            xmax = 1.57 
+            text = "" 
+        intervals [2]:
+            xmin = 1.57 
+            xmax = 2.16 
+            text = "premier" 
+        intervals [3]:
+            xmin = 2.16 
+            xmax = 2.66 
+            text = "agent" 
+        intervals [4]:
+            xmin = 2.66 
+            xmax = 3.1 
+            text = "" 
+        intervals [5]:
+            xmin = 3.1 
+            xmax = 3.31 
+            text = "à" 
+        intervals [6]:
+            xmin = 3.31 
+            xmax = 3.58 
+            text = "" 
+        intervals [7]:
+            xmin = 3.58 
+            xmax = 4.16 
+            text = "flora" 
+        intervals [8]:
+            xmin = 4.16 
+            xmax = 4.925625 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "phones" 
+        xmin = 0 
+        xmax = 4.925625 
+        intervals: size = 18 
+        intervals [1]:
+            xmin = 0.0 
+            xmax = 1.57 
+            text = "" 
+        intervals [2]:
+            xmin = 1.57 
+            xmax = 1.62 
+            text = "p" 
+        intervals [3]:
+            xmin = 1.62 
+            xmax = 1.72 
+            text = "ʁ" 
+        intervals [4]:
+            xmin = 1.72 
+            xmax = 1.74 
+            text = "ə" 
+        intervals [5]:
+            xmin = 1.74 
+            xmax = 1.86 
+            text = "mʲ" 
+        intervals [6]:
+            xmin = 1.86 
+            xmax = 2.16 
+            text = "e" 
+        intervals [7]:
+            xmin = 2.16 
+            xmax = 2.27 
+            text = "a" 
+        intervals [8]:
+            xmin = 2.27 
+            xmax = 2.39 
+            text = "ʒ" 
+        intervals [9]:
+            xmin = 2.39 
+            xmax = 2.66 
+            text = "ɑ̃" 
+        intervals [10]:
+            xmin = 2.66 
+            xmax = 3.1 
+            text = "" 
+        intervals [11]:
+            xmin = 3.1 
+            xmax = 3.31 
+            text = "a" 
+        intervals [12]:
+            xmin = 3.31 
+            xmax = 3.58 
+            text = "" 
+        intervals [13]:
+            xmin = 3.58 
+            xmax = 3.71 
+            text = "f" 
+        intervals [14]:
+            xmin = 3.71 
+            xmax = 3.76 
+            text = "l" 
+        intervals [15]:
+            xmin = 3.76 
+            xmax = 3.83 
+            text = "ɔ" 
+        intervals [16]:
+            xmin = 3.83 
+            xmax = 3.94 
+            text = "ʁ" 
+        intervals [17]:
+            xmin = 3.94 
+            xmax = 4.16 
+            text = "a" 
+        intervals [18]:
+            xmin = 4.16 
+            xmax = 4.925625 
+            text = "" 

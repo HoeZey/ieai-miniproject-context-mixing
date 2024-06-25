@@ -1,0 +1,212 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 7.685625 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 7.685625 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0.0 
+            xmax = 3.13 
+            text = "" 
+        intervals [2]:
+            xmin = 3.13 
+            xmax = 3.35 
+            text = "il" 
+        intervals [3]:
+            xmin = 3.35 
+            xmax = 3.95 
+            text = "réalise" 
+        intervals [4]:
+            xmin = 3.95 
+            xmax = 4.09 
+            text = "de" 
+        intervals [5]:
+            xmin = 4.09 
+            xmax = 4.55 
+            text = "nombreux" 
+        intervals [6]:
+            xmin = 4.55 
+            xmax = 5.07 
+            text = "portraits" 
+        intervals [7]:
+            xmin = 5.07 
+            xmax = 5.23 
+            text = "comme" 
+        intervals [8]:
+            xmin = 5.23 
+            xmax = 5.55 
+            text = "celui" 
+        intervals [9]:
+            xmin = 5.55 
+            xmax = 5.87 
+            text = "d'anna" 
+        intervals [10]:
+            xmin = 5.87 
+            xmax = 6.51 
+            text = "piaggi" 
+        intervals [11]:
+            xmin = 6.51 
+            xmax = 7.685625 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "phones" 
+        xmin = 0 
+        xmax = 7.685625 
+        intervals: size = 37 
+        intervals [1]:
+            xmin = 0.0 
+            xmax = 3.13 
+            text = "" 
+        intervals [2]:
+            xmin = 3.13 
+            xmax = 3.24 
+            text = "i" 
+        intervals [3]:
+            xmin = 3.24 
+            xmax = 3.35 
+            text = "l" 
+        intervals [4]:
+            xmin = 3.35 
+            xmax = 3.43 
+            text = "ʁ" 
+        intervals [5]:
+            xmin = 3.43 
+            xmax = 3.6 
+            text = "e" 
+        intervals [6]:
+            xmin = 3.6 
+            xmax = 3.64 
+            text = "a" 
+        intervals [7]:
+            xmin = 3.64 
+            xmax = 3.72 
+            text = "ʎ" 
+        intervals [8]:
+            xmin = 3.72 
+            xmax = 3.9 
+            text = "i" 
+        intervals [9]:
+            xmin = 3.9 
+            xmax = 3.95 
+            text = "z" 
+        intervals [10]:
+            xmin = 3.95 
+            xmax = 4.07 
+            text = "d" 
+        intervals [11]:
+            xmin = 4.07 
+            xmax = 4.09 
+            text = "ə" 
+        intervals [12]:
+            xmin = 4.09 
+            xmax = 4.17 
+            text = "n" 
+        intervals [13]:
+            xmin = 4.17 
+            xmax = 4.29 
+            text = "ɔ̃" 
+        intervals [14]:
+            xmin = 4.29 
+            xmax = 4.4 
+            text = "b" 
+        intervals [15]:
+            xmin = 4.4 
+            xmax = 4.46 
+            text = "ʁ" 
+        intervals [16]:
+            xmin = 4.46 
+            xmax = 4.55 
+            text = "ø" 
+        intervals [17]:
+            xmin = 4.55 
+            xmax = 4.61 
+            text = "p" 
+        intervals [18]:
+            xmin = 4.61 
+            xmax = 4.71 
+            text = "ɔ" 
+        intervals [19]:
+            xmin = 4.71 
+            xmax = 4.79 
+            text = "ʁ" 
+        intervals [20]:
+            xmin = 4.79 
+            xmax = 4.85 
+            text = "t" 
+        intervals [21]:
+            xmin = 4.85 
+            xmax = 4.91 
+            text = "ʁ" 
+        intervals [22]:
+            xmin = 4.91 
+            xmax = 5.02 
+            text = "ɛ" 
+        intervals [23]:
+            xmin = 5.02 
+            xmax = 5.07 
+            text = "t" 
+        intervals [24]:
+            xmin = 5.07 
+            xmax = 5.1 
+            text = "k" 
+        intervals [25]:
+            xmin = 5.1 
+            xmax = 5.13 
+            text = "ɔ" 
+        intervals [26]:
+            xmin = 5.13 
+            xmax = 5.23 
+            text = "m" 
+        intervals [27]:
+            xmin = 5.23 
+            xmax = 5.33 
+            text = "s" 
+        intervals [28]:
+            xmin = 5.33 
+            xmax = 5.35 
+            text = "ə" 
+        intervals [29]:
+            xmin = 5.35 
+            xmax = 5.48 
+            text = "l" 
+        intervals [30]:
+            xmin = 5.48 
+            xmax = 5.49 
+            text = "ɥ" 
+        intervals [31]:
+            xmin = 5.49 
+            xmax = 5.55 
+            text = "i" 
+        intervals [32]:
+            xmin = 5.55 
+            xmax = 5.62 
+            text = "d" 
+        intervals [33]:
+            xmin = 5.62 
+            xmax = 5.69 
+            text = "a" 
+        intervals [34]:
+            xmin = 5.69 
+            xmax = 5.8 
+            text = "n" 
+        intervals [35]:
+            xmin = 5.8 
+            xmax = 5.87 
+            text = "a" 
+        intervals [36]:
+            xmin = 5.87 
+            xmax = 6.51 
+            text = "spn" 
+        intervals [37]:
+            xmin = 6.51 
+            xmax = 7.685625 
+            text = "" 
