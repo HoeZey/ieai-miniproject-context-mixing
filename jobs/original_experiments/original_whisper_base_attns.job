@@ -16,4 +16,5 @@ source activate ieai-context-mix
 
 python experiments/scoring/attentions.py \
     --MODEL_NAME whisper-base \
+    --N_EXAMPLES 100 \
     --DIM_AGGREGATOR mean

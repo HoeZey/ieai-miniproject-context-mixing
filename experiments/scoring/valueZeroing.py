@@ -2,6 +2,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--MODEL_NAME")
 parser.add_argument("--DIM_AGGREGATOR")
+parser.add_argument("--N_EXAMPLES", default=0, type=int)
 parser.add_argument("--RANDOM", action='store_true')
 args = parser.parse_args()
 
@@ -58,8 +59,7 @@ else:
 
 # load annotated data
 annot_data = load_from_disk(f"{ANNOTATED_DATA_PATH}{TEMPLATE}")
-# num_examples = len(annot_data)
-num_examples = 10
+num_examples = len(annot_data) if args.N_EXAMPLES == 0 else args.N_EXAMPLES
 
 # Load processor and model
 is_encoder_decoder = MODEL_NAME.split('-')[0] == "whisper"

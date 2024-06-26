@@ -16,5 +16,6 @@ source activate ieai-context-mix
 
 python experiments/scoring/valueZeroing.py \
     --MODEL_NAME wav2vec2-large-xlsr-53-french \
+    --N_EXAMPLES 100 \
     --DIM_AGGREGATOR mean \
     --RANDOM
