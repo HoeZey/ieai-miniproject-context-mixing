@@ -2,10 +2,10 @@
 
 #SBATCH --partition=gpu
 #SBATCH --gpus=1
-#SBATCH --job-name=ORIG_XLSR_53_ATTNS
+#SBATCH --job-name=ORIG_XLSR_53_ATTNS_RAND
 #SBATCH --ntasks=1
 #SBATCH --time=00:15:00
-#SBATCH --output=output/original_experiments/xlsr_53_attns_%A.out
+#SBATCH --output=output/original_experiments/xlsr_53_attns_rand_%A.out
 
 module purge
 module load 2022
@@ -16,4 +16,5 @@ source activate ieai-context-mix
 
 python experiments/scoring/attentions.py \
     --MODEL_NAME wav2vec2-large-xlsr-53-french \
-    --DIM_AGGREGATOR mean 
+    --DIM_AGGREGATOR mean \
+    --RANDOM

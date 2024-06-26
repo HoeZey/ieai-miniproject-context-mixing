@@ -9,6 +9,9 @@ MODEL_NAME = args.MODEL_NAME
 DIM_AGGREGATOR = args.DIM_AGGREGATOR
 RANDOM = args.RANDOM
 
+if RANDOM:
+    print('RANDOM')
+
 # MODEL_NAME = "whisper-medium"
 # RANDOM = False
 # DIM_AGGREGATOR = "mean"
@@ -16,11 +19,11 @@ RANDOM = args.RANDOM
 METRIC = 'cosine'
 TASK = "common_voice"
 SPLIT = "test" 
-TEMPLATE = ""
+TEMPLATE = "all"
 SELECTED_GPU = 0
 ANNOTATED_DATA_PATH = f"./directory/datasets/{TASK}/{SPLIT}/"
 GENERATED_IDS_PATH = f"./directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
-SAVE_SCORES_PATH = f"./directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
+SAVE_SCORES_PATH = f"./directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/value_zeroing/"
 
 import sys, os
 sys.path.append('.')
@@ -55,7 +58,8 @@ else:
 
 # load annotated data
 annot_data = load_from_disk(f"{ANNOTATED_DATA_PATH}{TEMPLATE}")
-num_examples = len(annot_data)
+# num_examples = len(annot_data)
+num_examples = 10
 
 # Load processor and model
 is_encoder_decoder = MODEL_NAME.split('-')[0] == "whisper"

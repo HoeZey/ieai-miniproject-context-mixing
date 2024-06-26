@@ -3,6 +3,7 @@
 *.zip
 directory/mfa/
 # directory/mfa/
-data/datasets/*/
+directory/datasets/
 __pycache__/
 output/
+.venv/

@@ -4,7 +4,7 @@
 #SBATCH --gpus=1
 #SBATCH --job-name=ORIG_WHISPER_BASE_ATTNS
 #SBATCH --ntasks=1
-#SBATCH --time=00:05:00
+#SBATCH --time=00:59:00
 #SBATCH --output=output/original_experiments/whisper_base_attns_%A.out
 
 module purge
@@ -15,5 +15,5 @@ cd $HOME/ieai-miniproject-context-mixing/
 source activate ieai-context-mix
 
 python experiments/scoring/attentions.py \
-    --MODEL_NAME whisper \
+    --MODEL_NAME whisper-base \
     --DIM_AGGREGATOR mean

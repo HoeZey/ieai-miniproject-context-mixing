@@ -9,6 +9,9 @@ MODEL_NAME = args.MODEL_NAME
 DIM_AGGREGATOR = args.DIM_AGGREGATOR
 RANDOM = args.RANDOM
 
+if RANDOM:
+    print('RANDOM')
+
 # MODEL_NAME = "whisper-medium" 
 # RANDOM = False
 # DIM_AGGREGATOR = "mean"
@@ -19,12 +22,12 @@ TEMPLATE = "all"
 SELECTED_GPU = 0
 ANNOTATED_DATA_PATH = f"./directory/datasets/{TASK}/{SPLIT}/"
 GENERATED_IDS_PATH = f"./directory/predictions/{TASK}/{SPLIT}/{MODEL_NAME}/"
-SAVE_SCORES_PATH = f"./directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/"
+SAVE_SCORES_PATH = f"./directory/scores/{TASK}/{SPLIT}/{TEMPLATE}/{MODEL_NAME}/attentions/"
 
 import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.modules[__name__].__file__), "..")))
+sys.path.append('.')
 import pickle
-from tqdm.auto import tqdm
+from tqdm import tqdm
 import numpy as np
 import torch
 from datasets import load_from_disk
@@ -47,9 +50,11 @@ else:
 
 # load annotated data
 annot_data = load_from_disk(f"{ANNOTATED_DATA_PATH}{TEMPLATE}")
-num_examples = len(annot_data)
+# num_examples = len(annot_data)
+num_examples = 10
 
 # Load processor and model
+print('LOADING MODEL')
 is_encoder_decoder = MODEL_NAME.split('-')[0] == "whisper"
 processor = WhisperProcessor.from_pretrained(MODEL_PATH[MODEL_NAME], task='transcribe', language='french') if is_encoder_decoder else Wav2Vec2Processor.from_pretrained(MODEL_PATH[MODEL_NAME])
 if RANDOM:
@@ -62,6 +67,7 @@ model.to(device)
 model.eval()
 
 # Load generated token ids
+print('LOADING GENERATED IDS')
 if is_encoder_decoder:
     with open(f'{GENERATED_IDS_PATH}generated_ids.pkl', 'rb') as fp:
         generated_ids = pickle.load(fp)
@@ -71,8 +77,9 @@ if is_encoder_decoder:
         all_decoder_input_ids.append(decoder_input_ids.to(device))
 
 # input to features
+print('PROCESSING AUDIOS')
 all_input_features = []
-for ex in range(num_examples):
+for ex in tqdm(range(num_examples)):
     if is_encoder_decoder:
         features = processor(annot_data[ex]["audio"]["array"], sampling_rate=annot_data[ex]['audio']['sampling_rate'], return_tensors="pt").to(device) 
     else:
@@ -93,8 +100,8 @@ if is_encoder_decoder:
     all_cross_norms = []
     all_cross_summed_norms = []
 
-progress_bar = tqdm(range(num_examples))
-for ex in range(num_examples):
+print('COMPUTING ATTENTIONS')
+for ex in tqdm(range(num_examples)):
     # inference
     with torch.no_grad():
         if is_encoder_decoder:
@@ -188,14 +195,12 @@ for ex in range(num_examples):
         all_cross_norms.append(cross_norms)
         all_cross_summed_norms.append(cross_summed_norms)
 
-    
-    progress_bar.update(1)
-
 
 # Save
 postfix = "_" + DIM_AGGREGATOR
 if RANDOM:
     postfix = postfix + "_random" 
+    print('RANDOM')
 
 # encoder
 with open(f'{SAVE_SCORES_PATH}encoder_attention{postfix}.pkl', 'wb') as f:

@@ -18,6 +18,7 @@ from transformers import WhisperProcessor, Wav2Vec2Processor
 from datasets import Dataset, Audio, load_dataset, concatenate_datasets
 from utils import det_words, irregular_nouns
 from utils import MODEL_PATH, DATA_KEY, TEXT_KEY
+from tqdm import tqdm
 
 np.random.seed(SEED)
 
@@ -29,10 +30,10 @@ inflecteur = inflecteur()
 inflecteur.load_dict()
 
 PROCESSOR = {
-    'whisper-base': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-base'], task='transcribe', language='french'),
+    # 'whisper-base': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-base'], task='transcribe', language='french'),
     # 'whisper-small': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-small'], task='transcribe', language='french'),
     # 'whisper-medium': WhisperProcessor.from_pretrained(MODEL_PATH['whisper-medium'], task='transcribe', language='french'),
-    # 'wav2vec2-large-xlsr-53-french': Wav2Vec2Processor.from_pretrained(MODEL_PATH['wav2vec2-large-xlsr-53-french']), 
+    'wav2vec2-large-xlsr-53-french': Wav2Vec2Processor.from_pretrained(MODEL_PATH['wav2vec2-large-xlsr-53-french']), 
     # 'asr-wav2vec2-french': Wav2Vec2Processor.from_pretrained(MODEL_PATH['asr-wav2vec2-french']), 
 }
 
@@ -200,7 +201,7 @@ def det_noun(T):
 
         # find indices
         for cue_word, target_word in cue_target_pairs:
-            cue_token_dec_indices, target_token_dec_indices, cue_word_enc_indices, target_word_enc_indices = find_indices(PROCESSOR['whisper-small'], ex, cue_word.text, target_word.text)
+            cue_token_dec_indices, target_token_dec_indices, cue_word_enc_indices, target_word_enc_indices = find_indices(PROCESSOR[model_name], ex, cue_word.text, target_word.text)
 
             labels = {'number': target_word.morph.get('number'),
                     'person': target_word.morph.get('person'),
@@ -298,13 +299,13 @@ def pronoun_verb(T):
         if not_generated:    
             # print("#5")
             continue
-        
+            
         # find indices
-        cue_token_dec_indices, target_token_dec_indices, cue_word_enc_indices, target_word_enc_indices = find_indices(PROCESSOR['whisper-small'], ex, cue_word.text, target_word.text)
+        cue_token_dec_indices, target_token_dec_indices, cue_word_enc_indices, target_word_enc_indices = find_indices(PROCESSOR[model_name], ex, cue_word.text, target_word.text)
         
         labels = {'number': target_word.morph.get('number'),
-                  'person': target_word.morph.get('person'),
-                  'tense': target_word.morph.get('tense')}
+                'person': target_word.morph.get('person'),
+                'tense': target_word.morph.get('tense')}
         
         data.append({
             'template': 'pronoun_verb',
@@ -412,8 +413,8 @@ def det_noun_verb(T):
             continue
         
         # find indices
-        cue_token_dec_indices, target_token_dec_indices, cue_word_enc_indices, target_word_enc_indices = find_indices(PROCESSOR['whisper-small'], ex, cue_word.text, target_word.text)
-        cue_token_2_dec_indices, target_token_2_dec_indices, cue_word_2_enc_indices, target_word_2_enc_indices = find_indices(PROCESSOR['whisper-small'], ex, cue_word.text, target_word_2.text)
+        cue_token_dec_indices, target_token_dec_indices, cue_word_enc_indices, target_word_enc_indices = find_indices(PROCESSOR[model_name], ex, cue_word.text, target_word.text)
+        cue_token_2_dec_indices, target_token_2_dec_indices, cue_word_2_enc_indices, target_word_2_enc_indices = find_indices(PROCESSOR[model_name], ex, cue_word.text, target_word_2.text)
         if cue_token_dec_indices != cue_token_2_dec_indices or cue_word_enc_indices != cue_word_2_enc_indices:
             continue
         
@@ -456,7 +457,7 @@ for model_name in MODEL_PATH.keys():
 print("ALIGNING")
 file_ids = [int(f.split('.')[0]) for f in os.listdir(ALIGNMENT_PATH) if f.endswith('.TextGrid')]
 alignments = []
-for ex in range(len(original_data)):
+for ex in tqdm(range(len(original_data))):
     if ex not in file_ids:
         alignments.append({'id': ex, 'total_start': None, 'total_end': None, 'intervals': None})           
         continue
@@ -502,5 +503,3 @@ print(len(balanced_det_noun_data))
 print('AGGREGATING ALL TEMPLATES')
 all_data = concatenate_datasets([balanced_det_noun_data, pronoun_verb_data, det_noun_verb_data])
 all_data.save_to_disk(f"{ANNOTATED_DATA_PATH}all")
-
-
